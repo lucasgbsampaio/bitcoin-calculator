@@ -7,7 +7,7 @@ function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    res.status(401).send({ error: 'No token provided.' });
+    res.status(401).send({ error: 'Token obrigatório.' });
   }
 
   const parts = authHeader.split(' ');
@@ -19,12 +19,12 @@ function authMiddleware(req, res, next) {
   const [prefix, token] = parts;
 
   if (!/^Bearer$/i.test(prefix)) {
-    res.status(401).send({ error: 'Token malformatted.' });
+    res.status(401).send({ error: 'Token mal formatado.' });
   }
 
   jwt.verify(token, process.env.APP_SECRET, (err, decoded) => {
     if (err) {
-      res.status(401).send({ error: 'Invalid token.' });
+      res.status(401).send({ error: 'Token inválido.' });
     }
 
     next();
