@@ -26,6 +26,19 @@ export function ALL_QUOTATIONS() {
   };
 }
 
+export function CURRENT_QUOTATION() {
+  return {
+    url: API_URL + '/quotation',
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + window.localStorage.getItem('token'),
+      },
+      cache: 'no-store',
+    },
+  };
+}
+
 export function NEW_QUOTATION(body) {
   return {
     url: API_URL + '/crypto/btc',

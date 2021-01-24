@@ -95,4 +95,21 @@ export default {
       res.status(400).send({ message: error.message });
     }
   },
+
+  async getCurrentQuotation(req, res) {
+    try {
+      jsonReader('./currencies.json', (err, currency) => {
+        if (err) {
+          res.status(400).send({
+            message: 'Erro ao ler arquivo',
+          });
+          return;
+        }
+
+        res.status(200).send(currency);
+      });
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  },
 };

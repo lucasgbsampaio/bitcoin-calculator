@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { NEW_QUOTATION } from '../services/api.js';
+import { NEW_QUOTATION, CURRENT_QUOTATION } from '../services/api.js';
 import Input from '../components/Form/Input';
 import Button from '../components/Form/Button';
 
 export default function UpdateQuotation() {
   const [quotation, setQuotation] = React.useState('BRL');
+  const [currentQuotation, setCurrentQuotation] = React.useState(null);
   const [valueCurrency, setValueCurrency] = React.useState(0);
 
   const navigate = useNavigate();
@@ -24,6 +25,19 @@ export default function UpdateQuotation() {
       navigate('/');
     }
   }
+
+  React.useEffect(() => {
+    async function getCurrentQuotation() {
+      const { url, options } = CURRENT_QUOTATION();
+      const res = await fetch(url, options);
+      if (res.ok) {
+        const json = await res.json();
+        setCurrentQuotation(json);
+      }
+    }
+
+    getCurrentQuotation();
+  }, []);
 
   return (
     <div>
@@ -43,7 +57,9 @@ export default function UpdateQuotation() {
         <option value="CAD">CAD</option>
       </select>
 
-      {<div>Valor atual: </div>}
+      {currentQuotation && (
+        <div>Valor atual: {currentQuotation[quotation]}</div>
+      )}
 
       <form onSubmit={handleSubmit}>
         <Input
