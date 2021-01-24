@@ -8,8 +8,8 @@ const routes = express.Router();
 
 routes.post('/login', AuthController.login);
 
-routes.use(authMiddleware);
-routes.get('/crypto/btc', BitcoinController.getConversion);
+/* routes.use(authMiddleware);
+ */ routes.get('/crypto/btc', BitcoinController.getConversion);
 routes.post('/crypto/btc', BitcoinController.postConversion);
 
 export default routes;
