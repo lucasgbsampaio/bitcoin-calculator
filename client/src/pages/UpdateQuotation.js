@@ -54,6 +54,7 @@ export default function UpdateQuotation() {
           onChange={({ target }) => {
             setValueCurrency(target.value);
           }}
+          min="0"
         />
 
         <Button>Enviar</Button>

@@ -61,7 +61,11 @@ export default {
         throw new Error('Preencha os campos');
       }
 
-      if (!codes.includes(currency) || value < 0 || !Number.isInteger(value)) {
+      if (
+        !codes.includes(currency) ||
+        value < 0 ||
+        !Number.isInteger(Number(value))
+      ) {
         throw new Error('Valor inválido');
       }
 
