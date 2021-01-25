@@ -17,10 +17,9 @@ export default {
 
       jsonReader('./currencies.json', (err, currency) => {
         if (err) {
-          res.status(400).send({
+          return res.status(400).send({
             message: 'Erro ao ler arquivo',
           });
-          return;
         }
 
         const { bpi } = json;
@@ -71,17 +70,16 @@ export default {
 
       jsonReader('./currencies.json', (err, currencies) => {
         if (err) {
-          res.status(400).send({
+          return res.status(400).send({
             message: 'Erro ao ler arquivo',
           });
-          return;
         }
 
         currencies[currency] = value;
 
         fs.writeFile('./currencies.json', JSON.stringify(currencies), (err) => {
           if (err) {
-            res.status(400).send({
+            return res.status(400).send({
               message: 'Não foi possível alterar o valor',
             });
           }
@@ -100,10 +98,9 @@ export default {
     try {
       jsonReader('./currencies.json', (err, currency) => {
         if (err) {
-          res.status(400).send({
+          return res.status(400).send({
             message: 'Erro ao ler arquivo',
           });
-          return;
         }
 
         res.status(200).send(currency);
