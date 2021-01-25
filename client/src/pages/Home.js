@@ -19,20 +19,27 @@ export default function Home() {
       try {
         setError(null);
         setLoading(true);
+
         const { url, options } = ALL_QUOTATIONS();
         const res = await fetch(url, options);
         const json = await res.json();
+
         if (!res.ok) {
           throw new Error(json.message);
         }
+
         setQuotations(json.bpi);
       } catch (error) {
         setError(error.message);
       }
       setLoading(false);
     }
-
     getQuotations();
+
+    return () => {
+      setError(null);
+      setLoading(false);
+    };
   }, []);
 
   return (
@@ -100,7 +107,7 @@ export default function Home() {
           </div>
         </>
       ) : (
-        <div>{error}</div>
+        <div className="error">{error}</div>
       )}
     </section>
   );

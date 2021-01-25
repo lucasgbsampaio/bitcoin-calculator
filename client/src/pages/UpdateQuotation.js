@@ -23,16 +23,18 @@ export default function UpdateQuotation() {
     try {
       setError(null);
       setLoading(true);
+
       const { url, options } = NEW_QUOTATION({
         currency: quotation,
         value: valueCurrency,
       });
-
       const res = await fetch(url, options);
       const json = await res.json();
+
       if (!res.ok) {
         throw new Error(json.message);
       }
+
       navigate('/');
     } catch (error) {
       setError(error.message);
@@ -49,7 +51,6 @@ export default function UpdateQuotation() {
         setCurrentQuotation(json);
       }
     }
-
     getCurrentQuotation();
 
     return () => {
@@ -94,8 +95,13 @@ export default function UpdateQuotation() {
           min="0"
         />
 
-        {!loading ? <Button>Enviar</Button> : <Button disabled>Enviar</Button>}
-        {error && <div>{error}</div>}
+        {!loading ? (
+          <Button>Atualizar</Button>
+        ) : (
+          <Button disabled>Atualizar</Button>
+        )}
+
+        {error && <div className="error">{error}</div>}
       </form>
     </section>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { USER_LOGIN } from '../services/api.js';
 
+import { USER_LOGIN } from '../services/api.js';
 import Input from '../components/Form/Input';
 import Button from '../components/Form/Button';
 
@@ -21,16 +21,18 @@ export default function Login() {
     try {
       setError(null);
       setLoading(true);
+
       const { url, options } = USER_LOGIN({
         email,
         password,
       });
-
       const res = await fetch(url, options);
       const json = await res.json();
+
       if (!res.ok) {
         throw new Error(json.message);
       }
+
       window.localStorage.setItem('token', json.token);
       navigate('/');
     } catch (error) {
@@ -71,7 +73,7 @@ export default function Login() {
 
         {!loading ? <Button>Enviar</Button> : <Button disabled>Enviar</Button>}
 
-        {error && <div>{error}</div>}
+        {error && <div className="error">{error}</div>}
       </form>
     </section>
   );

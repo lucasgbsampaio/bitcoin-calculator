@@ -12,3 +12,7 @@ textarea,
 a {
   font: 500 20px 'Lato', sans-serif;
 }
+
+.error {
+  color: red;
+}
