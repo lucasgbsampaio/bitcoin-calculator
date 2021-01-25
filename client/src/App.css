@@ -1,7 +1,14 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 body,
 input,
 button,
 textarea,
 a {
-  font: 400 20px 'Lato', sans-serif;
+  font: 500 20px 'Lato', sans-serif;
 }

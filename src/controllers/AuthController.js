@@ -17,11 +17,13 @@ export default {
 
     try {
       if (!email || !password) {
-        throw new Error('Campos vazios');
+        throw new Error('Campos inválidos');
       }
 
       if (!validateEmail(email) || !validatePassword(password)) {
-        throw new Error('Campos inválidos');
+        throw new Error(
+          'Email deve ser válido e a senha deve conter 6 números.'
+        );
       }
 
       res.status(200).send({

@@ -19,10 +19,5 @@ app.use('/api', routes);
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
-app.use((req, res, next) => {
-  res.status(404).send({
-    message: 'Endpoint não encontrado',
-  });
-});
 
 app.listen(process.env.PORT || 8080, () => console.log('Server iniciado'));

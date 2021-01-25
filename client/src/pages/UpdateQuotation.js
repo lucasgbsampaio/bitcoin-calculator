@@ -1,29 +1,43 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 
 import { NEW_QUOTATION, CURRENT_QUOTATION } from '../services/api.js';
 import Input from '../components/Form/Input';
 import Button from '../components/Form/Button';
 
+import style from './UpdateQuotation.module.css';
+
 export default function UpdateQuotation() {
   const [quotation, setQuotation] = React.useState('BRL');
   const [currentQuotation, setCurrentQuotation] = React.useState(null);
-  const [valueCurrency, setValueCurrency] = React.useState(0);
+  const [valueCurrency, setValueCurrency] = React.useState('');
+  const [error, setError] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const { url, options } = NEW_QUOTATION({
-      currency: quotation,
-      value: valueCurrency,
-    });
+    try {
+      setError(null);
+      setLoading(true);
+      const { url, options } = NEW_QUOTATION({
+        currency: quotation,
+        value: valueCurrency,
+      });
 
-    const res = await fetch(url, options);
-    if (res.ok) {
+      const res = await fetch(url, options);
+      const json = await res.json();
+      if (!res.ok) {
+        throw new Error(json.message);
+      }
       navigate('/');
+    } catch (error) {
+      setError(error.message);
     }
+    setLoading(false);
   }
 
   React.useEffect(() => {
@@ -37,10 +51,15 @@ export default function UpdateQuotation() {
     }
 
     getCurrentQuotation();
+
+    return () => {
+      setError(null);
+      setLoading(false);
+    };
   }, []);
 
   return (
-    <div>
+    <section className={style.wrapper}>
       <Link to="/">
         <Button>Voltar</Button>
       </Link>
@@ -57,8 +76,10 @@ export default function UpdateQuotation() {
         <option value="CAD">CAD</option>
       </select>
 
-      {currentQuotation && (
+      {currentQuotation ? (
         <div>Valor atual: {currentQuotation[quotation]}</div>
+      ) : (
+        <Loader type="Oval" color="black" height={40} width={40} />
       )}
 
       <form onSubmit={handleSubmit}>
@@ -73,8 +94,9 @@ export default function UpdateQuotation() {
           min="0"
         />
 
-        <Button>Enviar</Button>
+        {!loading ? <Button>Enviar</Button> : <Button disabled>Enviar</Button>}
+        {error && <div>{error}</div>}
       </form>
-    </div>
+    </section>
   );
 }

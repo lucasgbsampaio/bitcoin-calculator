@@ -1,0 +1,55 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.wrapper a {
+  text-decoration: none;
+  width: 90%;
+  max-width: 400px;
+  margin: 15px 0;
+}
+
+.wrapper form {
+  width: 90%;
+  max-width: 400px;
+}
+
+.wrapper div {
+  margin-bottom: 10px;
+}
+
+.wrapper select {
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  padding: 10px 5px;
+  margin: 5px 0;
+}
+
+.wrapper form input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 5px;
+  margin-top: 5px;
+}
+
+.wrapper button {
+  margin-top: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 5px;
+  background: #5fe122;
+  border: none;
+  cursor: pointer;
+}
+
+.wrapper input[type='number']::-webkit-outer-spin-button,
+.wrapper input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

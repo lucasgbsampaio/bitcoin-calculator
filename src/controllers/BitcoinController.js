@@ -66,7 +66,7 @@ export default {
         value < 0 ||
         !Number.isInteger(Number(value))
       ) {
-        throw new Error('Valor inválido');
+        throw new Error('Moeda/Valor inválido');
       }
 
       jsonReader('./currencies.json', (err, currencies) => {
