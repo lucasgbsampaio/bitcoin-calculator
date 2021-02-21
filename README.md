@@ -1,5 +1,5 @@
 <h1 align="center">
-     <a href="https://be-trybe.herokuapp.com/" alt="link-be-trybe"> Be-Trybe Techinical-Test </a>
+     <a href="https://be-trybe.herokuapp.com/" alt="link"> Bitcoin Calculator </a>
 </h1>
 
 <h4 align="center">
