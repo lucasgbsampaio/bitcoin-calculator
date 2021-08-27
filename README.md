@@ -71,7 +71,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/lucasfe4nor/bitcoin-calculator.git
+$ git clone https://github.com/lucasgbsampaio/bitcoin-calculator.git
 
 # Acesse a pasta do projeto no terminal/cmd para ter acesso a raiz da pasta
 $ cd bitcoin-calculator
@@ -117,7 +117,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
 - **[React Loader Spinner](https://www.npmjs.com/package/react-loader-spinner)**
 
-> Veja o arquivo [package.json](https://github.com/lucasfe4nor/betrybe-technical-test/blob/master/client/package.json)
+> Veja o arquivo [package.json](https://github.com/lucasgbsampaio/betrybe-technical-test/blob/master/client/package.json)
 
 #### Server ([NodeJS](https://nodejs.org/en/))
 
@@ -128,13 +128,13 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[BodyParser](https://www.npmjs.com/package/body-parser)**
 - **[Node-Fetch](https://www.npmjs.com/package/node-fetch)**
 
-> Veja o arquivo [package.json](https://github.com/lucasfe4nor/betrybe-technical-test/blob/master/package.json)
+> Veja o arquivo [package.json](https://github.com/lucasgbsampaio/betrybe-technical-test/blob/master/package.json)
 
 ---
 
 ## 👨‍💻 Autor
 
-- **Lucas Sampaio (lucasfe4nor)** - [Twitter](https://twitter.com/lucasfe4nor) - [LinkedIn](https://www.linkedin.com/in/lucasgbsampaio/)
+- **Lucas Sampaio (lucasgbsampaio)** - [Twitter](https://twitter.com/lucasgbsampaio) - [LinkedIn](https://www.linkedin.com/in/lucasgbsampaio/)
 
 ---
 
